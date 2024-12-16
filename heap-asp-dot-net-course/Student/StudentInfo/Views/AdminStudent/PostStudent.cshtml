@@ -1,0 +1,35 @@
+﻿@model StudentInfo.Models.ViewModel.PostStudentRequest
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+﻿@{
+    ViewData["Title"] = "Post Student";
+}
+
+
+<div class="bg-body-tertiary">
+    <div class="container">
+        <div class="card w-50 mx-auto">
+            <form method="post">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Add New Student</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" asp-for="Name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" asp-for="Department">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Session</label>
+                        <input type="text" class="form-control" id="session" asp-for="Session">
+                    </div>
+                    <button class="btn btn-dark" type="submit">Submit</button >
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

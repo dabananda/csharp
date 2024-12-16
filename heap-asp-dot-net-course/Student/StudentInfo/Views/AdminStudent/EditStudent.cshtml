@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+﻿@{
+	ViewData["Title"] = "Edit Student";
+}
+
+@model StudentInfo.Models.ViewModel.EditStudentRequest
+
+<div class="bg-body-tertiary">
+	<div class="container">
+		<div class="card w-50 mx-auto">
+			<form method="post">
+				<div class="card-body">
+					<h5 class="card-title text-center">Edit Student</h5>
+					<input asp-for="Id" hidden />
+					<div class="mb-3">
+						<label class="form-label">Full Name</label>
+						<input type="text" class="form-control" id="name" asp-for="Name" readonly>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Department</label>
+						<input type="text" class="form-control" id="department" asp-for="Department">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Session</label>
+						<input type="text" class="form-control" id="session" asp-for="Session">
+					</div>
+					<div class="d-flex justify-content-end">
+						<button class="btn btn-dark me-2" type="submit" asp-action="EditStudent">Update</button>
+						<button class="btn btn-danger" type="submit" asp-controller="AdminStudent" asp-action="DeleteStudent">Delete</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
