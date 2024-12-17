@@ -1,0 +1,38 @@
+﻿@model List<ProductInventoryApp.Models.Product>
+
+@{
+	ViewData["Title"] = "Products";
+}
+
+<div class="container bg-light">
+	<h2 class="text-center">Products in stock</h2>
+	<hr />
+	<table class="table table-striped w-75 mx-auto">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<th>@product.Id + 100</th>
+					<td>@product.Name</td>
+					<td>@product.Category</td>
+					<td>@product.Price</td>
+					<td>@product.Quantity</td>
+					<td>
+						<a class="btn btn-secondary" asp-controller="Product" asp-action="PutProduct" asp-route-id="@product.Id">Update</a>
+						<a class="btn btn-secondary" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.Id">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
