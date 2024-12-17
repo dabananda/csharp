@@ -1,0 +1,36 @@
+﻿@model ProductInventoryApp.Models.PostProductModel
+
+@{
+	ViewData["Title"] = "Add Product";
+}
+
+<div class="bg-body-tertiary">
+	<div class="container">
+		<div class="card w-75 mx-auto">
+			<form method="post">
+				<div class="card-body">
+					<h5 class="card-title text-center">Add New Product</h5>
+					<div class="mb-3">
+						<label class="form-label">Product name</label>
+						<input type="text" class="form-control" id="name" asp-for="Name">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Category</label>
+						<input type="text" class="form-control" id="category" asp-for="Category">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Price</label>
+						<input type="text" class="form-control" id="price" asp-for="Price">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Quantity</label>
+						<input type="number" class="form-control" id="quantity" asp-for="Quantity">
+					</div>
+					<div class="d-grid col-6 mx-auto">
+						<button class="btn btn-dark" type="submit">Save Product</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
