@@ -1,0 +1,36 @@
+﻿@model List<CGPACalculatorApp.Models.Student>
+
+@{
+	ViewData["Title"] = "Students";
+}
+
+<div class="container">
+	<h2>All Students CGPA</h2>
+	<hr />
+	<br />
+	<table class="table table-striped w-75 mx-auto">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Department</th>
+				<th>Session</th>
+				<th>Semester</th>
+				<th>GPA</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var student in Model)
+			{
+				<tr>
+					<th>@student.Id</th>
+					<td>@student.Name</td>
+					<td>@student.Department</td>
+					<td>@student.Session</td>
+					<td>@student.Semester</td>
+					<td>@student.GPA</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
