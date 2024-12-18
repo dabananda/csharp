@@ -17,6 +17,8 @@ namespace ProductInventoryApp.Controllers
         public IActionResult Index()
         {
             var products = _context.Products.ToList();
+            var totalValue = products.Sum(x => x.Price * x.Quantity);
+            ViewBag.TotalValue = totalValue;
             return View(products);
         }
 
