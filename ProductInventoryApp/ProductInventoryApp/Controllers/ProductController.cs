@@ -14,7 +14,7 @@ namespace ProductInventoryApp.Controllers
 
         // Get all products
         [HttpGet]
-        public IActionResult GetProducts()
+        public IActionResult Index()
         {
             var products = _context.Products.ToList();
             return View(products);
@@ -22,14 +22,14 @@ namespace ProductInventoryApp.Controllers
 
         // Get "Add Product" page
         [HttpGet]
-        public IActionResult PostProduct()
+        public IActionResult Create()
         {
             return View();
         }
 
         // Add new product
         [HttpPost]
-        public IActionResult PostProduct(PostProductModel postProductModel)
+        public IActionResult Create(PostProductModel postProductModel)
         {
             var product = new Product()
             {
@@ -40,12 +40,12 @@ namespace ProductInventoryApp.Controllers
             };
             _context.Products.Add(product);
             _context.SaveChanges();
-            return RedirectToAction("GetProducts");
+            return RedirectToAction("Index");
         }
 
         // Get the edit product form
         [HttpGet]
-        public IActionResult PutProduct(int id)
+        public IActionResult Edit(int id)
         {
             var product = _context.Products.FirstOrDefault(x => x.Id == id);
             if (product != null)
@@ -65,7 +65,7 @@ namespace ProductInventoryApp.Controllers
 
         // Update the product
         [HttpPost]
-        public IActionResult PutProduct(PutProductModel putProductModel)
+        public IActionResult Edit(PutProductModel putProductModel)
         {
             var existingProduct = _context.Products.Find(putProductModel.Id);
             if (existingProduct != null)
@@ -76,7 +76,7 @@ namespace ProductInventoryApp.Controllers
                 existingProduct.Quantity = putProductModel.Quantity;
                 _context.SaveChanges();
             }
-            return RedirectToAction("GetProducts");
+            return RedirectToAction("Index");
         }
     }
 }

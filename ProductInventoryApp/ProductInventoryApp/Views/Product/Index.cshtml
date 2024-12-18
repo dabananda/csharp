@@ -28,8 +28,8 @@
 					<td>@product.Price</td>
 					<td>@product.Quantity</td>
 					<td>
-						<a class="btn btn-secondary" asp-controller="Product" asp-action="PutProduct" asp-route-id="@product.Id">Update</a>
-						<a class="btn btn-secondary" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.Id">Delete</a>
+						<a class="btn btn-secondary" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">Update</a>
+						<a class="btn btn-secondary" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
 					</td>
 				</tr>
 			}
