@@ -18,7 +18,13 @@ namespace ProductInventoryApp.Controllers
         {
             var products = _context.Products.ToList();
             var totalValue = products.Sum(x => x.Price * x.Quantity);
+            var totalQuantity = products.Sum(x => x.Quantity);
+            var totalCategories = products.Select(x => x.Category).Distinct().Count();
+            var totalUniqueItems = products.Select(x => x.Name).Distinct().Count();
             ViewBag.TotalValue = totalValue;
+            ViewBag.TotalQuantity = totalQuantity;
+            ViewBag.TotalCategories = totalCategories;
+            ViewBag.TotalItems = totalUniqueItems;
             return View(products);
         }
 

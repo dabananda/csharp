@@ -7,9 +7,17 @@
 <div class="container">
 	<h2 class="text-center">Products in Stock</h2>
 	<hr class="w-75 mx-auto" />
-	<div class="bg-light w-75 mx-auto py-2 text-center">
-		<span>Total Stock Value: @ViewBag.TotalValue tk</span>
-	</div>
+	<table class="table table-bordered bg-light w-75 mx-auto">
+		<tbody>
+			<tr>
+				<th>Stock Summary</th>
+				<td>Total Items: @ViewBag.TotalItems</td>
+				<td>Total Category: @ViewBag.TotalCategories</td>
+				<td>Total Quntity: @ViewBag.TotalQuantity</td>
+				<td>Total Stock Value: @ViewBag.TotalValue tk</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="card w-75 mx-auto mt-4">
 		<div class="card-body px-0">
 			<table class="table table-striped">
