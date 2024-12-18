@@ -39,12 +39,13 @@ namespace ProductInventoryApp.Controllers
         [HttpPost]
         public IActionResult Create(PostProductModel postProductModel)
         {
-            var product = new Product()
+            var product = new Product
             {
                 Name = postProductModel.Name,
                 Category = postProductModel.Category,
                 Price = postProductModel.Price,
                 Quantity = postProductModel.Quantity,
+                QuantityUnit = postProductModel.QuantityUnit
             };
             _context.Products.Add(product);
             _context.SaveChanges();

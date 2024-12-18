@@ -12,15 +12,26 @@
 					<h5 class="card-title text-center">Update Product</h5>
 					<div class="mb-3">
 						<label class="form-label">Product Id</label>
-						<input type="number" class="form-control" id="id" asp-for="Id" readonly>
+						<input type="number" class="form-control" id="Id" asp-for="Id" readonly>
 					</div>
 					<div class="mb-3">
-						<label class="form-label">Product name</label>
-						<input type="text" class="form-control" id="name" asp-for="Name">
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Category</label>
-						<input type="text" class="form-control" id="category" asp-for="Category">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">Product name</label>
+								<input type="text" class="form-control" id="name" asp-for="Name">
+							</div>
+							<div class="col">
+								<label class="form-label">Category</label>
+								<select class="form-select" id="category" asp-for="Category">
+									<option value="Food">Food</option>
+									<option value="Oil">Oil</option>
+									<option value="Fruits">Fruits</option>
+									<option value="Meat">Meat</option>
+									<option value="Fish">Fish</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+						</div>
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Price</label>
@@ -28,7 +39,13 @@
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Quantity</label>
-						<input type="number" class="form-control" id="quantity" asp-for="Quantity">
+						<div class="input-group">
+							<input type="number" class="form-control" id="quantity" asp-for="Quantity">
+							<select class="form-select" id="quantityUnit" name="QuantityUnit">
+								<option value="kg">kg</option>
+								<option value="liter">liter</option>
+							</select>
+						</div>
 					</div>
 					<div class="d-grid col-6 mx-auto">
 						<button class="btn btn-dark" type="submit">Update</button>
