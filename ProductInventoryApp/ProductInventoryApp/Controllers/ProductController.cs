@@ -78,5 +78,17 @@ namespace ProductInventoryApp.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // Delete product
+        public IActionResult Delete(int id)
+        {
+            var product = _context.Products.Find(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
