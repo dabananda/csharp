@@ -83,6 +83,7 @@ namespace ProductInventoryApp.Controllers
                 existingProduct.Category = putProductModel.Category;
                 existingProduct.Price = putProductModel.Price;
                 existingProduct.Quantity = putProductModel.Quantity;
+                existingProduct.QuantityUnit = putProductModel.QuantityUnit;
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
