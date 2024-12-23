@@ -2,6 +2,7 @@
 using StudentInfo.Data;
 using StudentInfo.Models.Domain;
 using StudentInfo.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace StudentInfo.Controllers
 {
@@ -16,9 +17,9 @@ namespace StudentInfo.Controllers
 
         // Get the student list
         [HttpGet]
-        public IActionResult GetStudents()
+        public async Task<IActionResult> GetStudents()
         {
-            var studentList = studentDbContext.StudentInfos.ToList();
+            var studentList = await studentDbContext.StudentInfos.ToListAsync();
             return View(studentList);
         }
 
@@ -31,7 +32,7 @@ namespace StudentInfo.Controllers
 
         // Create new student
         [HttpPost]
-        public IActionResult PostStudent(PostStudentRequest postStudentRequest)
+        public async Task<IActionResult> PostStudent(PostStudentRequest postStudentRequest)
         {
             var student = new Student
             {
@@ -39,16 +40,16 @@ namespace StudentInfo.Controllers
                 Department = postStudentRequest.Department,
                 Session = postStudentRequest.Session,
             };
-            studentDbContext.StudentInfos.Add(student);
-            studentDbContext.SaveChanges();
+            await studentDbContext.StudentInfos.AddAsync(student);
+            await studentDbContext.SaveChangesAsync();
             return RedirectToAction("GetStudents");
         }
 
         // Get the form to edit student with id
         [HttpGet]
-        public IActionResult EditStudent(int id)
+        public async Task<IActionResult> EditStudent(int id)
         {
-            var student = studentDbContext.StudentInfos.SingleOrDefault(x => x.Id == id);
+            var student = await studentDbContext.StudentInfos.SingleOrDefaultAsync(x => x.Id == id);
             if (student != null)
             {
                 var editStudentRequest = new EditStudentRequest()
@@ -65,7 +66,7 @@ namespace StudentInfo.Controllers
 
         // Post the updated student
         [HttpPost]
-        public IActionResult EditStudent(EditStudentRequest editStudentRequest)
+        public async Task<IActionResult> EditStudent(EditStudentRequest editStudentRequest)
         {
             var student = new Student()
             {
@@ -74,26 +75,26 @@ namespace StudentInfo.Controllers
                 Department = editStudentRequest.Department,
                 Session = editStudentRequest.Session,
             };
-            var existingStudent = studentDbContext.StudentInfos.Find(student.Id);
+            var existingStudent = await studentDbContext.StudentInfos.FindAsync(student.Id);
             if (existingStudent != null)
             {
                 existingStudent.Name = student.Name;
                 existingStudent.Department = student.Department;
                 existingStudent.Session = student.Session;
-                studentDbContext.SaveChanges();
+                await studentDbContext.SaveChangesAsync();
 
             }
             return RedirectToAction("GetStudents");
         }
 
         [HttpPost]
-        public IActionResult DeleteStudent(EditStudentRequest editStudentRequest)
+        public async Task<IActionResult> DeleteStudent(EditStudentRequest editStudentRequest)
         {
-            var student = studentDbContext.StudentInfos.Find(editStudentRequest.Id);
+            var student = await studentDbContext.StudentInfos.FindAsync(editStudentRequest.Id);
             if (student != null)
             {
                 studentDbContext.StudentInfos.Remove(student);
-                studentDbContext.SaveChanges();
+                await studentDbContext.SaveChangesAsync();
             }
             return RedirectToAction("GetStudents");
         }
