@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentInfo.Data;
+using StudentInfo.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StudentDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StudentDbConnectionString"))
 );
+
+// Dependency injection for StudentRepo
+builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 
 var app = builder.Build();
 
