@@ -25,20 +25,20 @@ namespace StudentInfo.Controllers
 
         // Get the add a new student form
         [HttpGet]
-        public IActionResult PostStudent()
+        public IActionResult CreateStudent()
         {
             return View();
         }
 
         // Create new student
         [HttpPost]
-        public async Task<IActionResult> PostStudent(PostStudentRequest postStudentRequest)
+        public async Task<IActionResult> CreateStudent(CreateStudentRequest createStudentRequest)
         {
             var student = new Student
             {
-                Name = postStudentRequest.Name,
-                Department = postStudentRequest.Department,
-                Session = postStudentRequest.Session,
+                Name = createStudentRequest.Name,
+                Department = createStudentRequest.Department,
+                Session = createStudentRequest.Session,
             };
             await studentDbContext.StudentInfos.AddAsync(student);
             await studentDbContext.SaveChangesAsync();

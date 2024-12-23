@@ -1,6 +1,6 @@
 ﻿namespace StudentInfo.Models.ViewModel
 {
-    public class PostStudentRequest
+    public class CreateStudentRequest
     {
         public int Id { get; set; }
         public string? Name { get; set; }
