@@ -38,17 +38,17 @@ namespace StudentInfo.Repository
 
         public async Task<Student?> GetStudentById(int id)
         {
-            return await studentDbContext.StudentInfos.SingleOrDefaultAsync(x => x.Id == id);
+            return await studentDbContext.StudentInfos.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Student?> UpdateStudent(int id, Student updatedStudent)
+        public async Task<Student?> UpdateStudent(Student student)
         {
-            var existingStudent = studentDbContext.StudentInfos.SingleOrDefault(x => x.Id == id);
+            var existingStudent = await studentDbContext.StudentInfos.FindAsync(student.Id);
             if (existingStudent != null)
             {
-                existingStudent.Name = updatedStudent.Name;
-                existingStudent.Department = updatedStudent.Department;
-                existingStudent.Session = updatedStudent.Session;
+                existingStudent.Name = student.Name;
+                existingStudent.Department = student.Department;
+                existingStudent.Session = student.Session;
                 await studentDbContext.SaveChangesAsync();
                 return existingStudent;
             }

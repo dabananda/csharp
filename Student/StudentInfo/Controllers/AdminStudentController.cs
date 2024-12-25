@@ -50,7 +50,7 @@ namespace StudentInfo.Controllers
             var student = await studentRepo.GetStudentById(id);
             if (student != null)
             {
-                var editStudentRequest = new EditStudentRequest()
+                var editStudentRequest = new EditStudentRequest
                 {
                     Id = student.Id,
                     Name = student.Name,
@@ -73,12 +73,12 @@ namespace StudentInfo.Controllers
                 Department = editStudentRequest.Department,
                 Session = editStudentRequest.Session,
             };
-            var existingStudent = await studentRepo.UpdateStudent(editStudentRequest.Id, student);
-            if (existingStudent != null)
+            var updatedStudent = await studentRepo.UpdateStudent(student);
+            if (updatedStudent != null)
             {
                 return RedirectToAction("GetStudents");
             }
-            return View(editStudentRequest);
+            return RedirectToAction("GetStudents");
         }
 
         [HttpPost]
