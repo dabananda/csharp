@@ -11,8 +11,8 @@ using StudentInfo.Data;
 namespace StudentInfo.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20241213161208_StudentDbConnection")]
-    partial class StudentDbConnection
+    [Migration("20250105154836_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
